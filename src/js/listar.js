@@ -8,8 +8,6 @@ export class Clientes {
         const dados = array.forEach(element => {
             const clienteCard = document.createElement('li')
             clienteCard.setAttribute('class','card')
-
-
             const clienteName = document.createElement('h2')
             const divDadosCliente = document.createElement('div')
             const nameDiv = document.createElement('h3')
@@ -44,7 +42,7 @@ export class Clientes {
             pNumero.innerText = element.endereco.numero
             divDadosEndereço.append(nomeDivEndereço,pCep,pEstado,pCidade,pBairro,pRua,pNumero)
 
-            clienteCard.append(divDadosCliente,divDadosEndereço)
+            clienteCard.append(clienteName,divDadosCliente,divDadosEndereço)
             ulbase.append(clienteCard)
 
 
