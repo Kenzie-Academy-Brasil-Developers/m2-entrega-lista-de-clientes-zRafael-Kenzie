@@ -47,21 +47,25 @@ export class Api {
                 'Content-Type':'application/json'
         }
         })
-        .then(res => console.log("deletado com sucesso"))
-      
+        .then(console.log("deletado com sucesso"))
         .catch(err => console.log(err))
 
         return deletar
     }
 
     static async editarCliente(id, body){
-        const newclient = await fetch(`${this.baseUrl}/${id}`, {
+        const editClient = await fetch(`${this.baseUrl}/${id}`, {
             method : "PATCH",
-            headers: this.headers,
+            headers: {
+                'Content-Type':'application/json'
+        },
             body: JSON.stringify(body)
         })
         .then(res => res.json())
+        .then(console.log("cliente atualizado"))
         .catch(err => console.log(err))
+
+        return editClient
     }
 
 

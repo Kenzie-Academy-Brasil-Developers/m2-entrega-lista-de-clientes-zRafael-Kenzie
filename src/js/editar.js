@@ -30,7 +30,7 @@ class Editar {
             event.preventDefault()
 
         clienteslist.forEach((cliente) => {
-                if(cliente.id == select.selectedIndex) {
+                if(cliente.id == select.options[select.selectedIndex].id) {
 
                     form[0].value   = cliente.nome
                     form[1].value  = cliente.email
@@ -61,25 +61,25 @@ class Editar {
                 event.preventDefault()
                 const id = cliente.id
 
-                if(id == select.selectedIndex) {
+                if(id == select.options[select.selectedIndex].id) {
 
                     const data = {
-                        "nome": formulario[0].value,
-                    "email": formulario[1].value,
-                    "sexo": formulario[4].value,
-                    "idade": formulario[2].value,
-                    "cpf": formulario[3].value,
-                    "endereco": {
-                        "estado": formulario[10].value,
-                        "cidade": formulario[9].value,
-                        "bairro": formulario[8].value,
-                        "numero": formulario[7].value,
-                        "rua": formulario[6].value,
-                        "cep": formulario[5].value
+                        nome: formulario[0].value,
+                    email: formulario[1].value,
+                    sexo: formulario[4].value,
+                    idade: formulario[2].value,
+                    cpf: formulario[3].value,
+                    endereco: {
+                        estado: formulario[10].value,
+                        cidade: formulario[9].value,
+                        bairro: formulario[8].value,
+                        numero: formulario[7].value,
+                        rua: formulario[6].value,
+                        cep: formulario[5].value
                         }
         
                     }
-        
+                    console.log(JSON.stringify(data))
                     Api.editarCliente(id, data)
 
                 }
