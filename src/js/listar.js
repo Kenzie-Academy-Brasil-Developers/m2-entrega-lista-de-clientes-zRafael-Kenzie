@@ -52,3 +52,6 @@ export class Clientes {
     }
 }
 
+const listaDeClientes = await Api.listarClientes()
+
+Clientes.criarCard(listaDeClientes)

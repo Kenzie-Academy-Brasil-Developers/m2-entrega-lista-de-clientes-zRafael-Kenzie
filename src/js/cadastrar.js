@@ -6,7 +6,7 @@ class cadastrarCliente {
         const formulario = document.querySelector("form");
         formulario.addEventListener("click", event => {
             event.preventDefault()
-            if (e.target.tagName === "BUTTON") {
+            if (event.target.tagName === "BUTTON") {
                 const client = {
                     "nome": formulario[0].value,
                     "email": formulario[1].value,
@@ -24,7 +24,6 @@ class cadastrarCliente {
                 }
 
                 Api.cadastrarCliente(client);
-                console.log(JSON.stringify(client))
                 formulario.reset();
             }
         })
