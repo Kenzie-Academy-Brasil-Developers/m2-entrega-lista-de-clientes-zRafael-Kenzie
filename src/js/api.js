@@ -1,5 +1,3 @@
-import { Clientes } from "./listar.js"
-
 export class Api {
 
     static baseUrl = 'https://atividade-api-clientes.herokuapp.com/clientes'
@@ -15,13 +13,13 @@ export class Api {
             .then(res =>res)
             .catch(err => console.log(err))
 
-            Clientes.criarCard(data)
             return data
 
     }
 
     static async cadastrarCliente(data) {
-        const cadastrar = await fetch(this.urlBase, {
+        console.log(data)
+        const cadastrar = await fetch(this.baseUrl, {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'
@@ -30,7 +28,7 @@ export class Api {
         })
         
             .then(res => res.json())
-            .then(res => res)
+            .then(res => console.log(res))
             .catch(err => console.log(err))
         return cadastrar
     }
@@ -67,7 +65,3 @@ export class Api {
 
 }
 
-Api.listarClientes()
-//Api.cadastrarCliente()
-// Api.editarCliente()
-// Api.deletarCliente()

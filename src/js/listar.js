@@ -1,7 +1,6 @@
 import { Api } from "./api.js"
 
 export class Clientes {
-
     static criarCard(array) {
         const ulbase = document.querySelector(".container")
 
@@ -52,3 +51,8 @@ export class Clientes {
     }
 }
 
+
+
+const listaDeClientes= await Api.listarClientes()
+
+Clientes.criarCard(listaDeClientes)
