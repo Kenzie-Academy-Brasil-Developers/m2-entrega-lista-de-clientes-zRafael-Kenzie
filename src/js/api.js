@@ -1,5 +1,3 @@
-import { Clientes } from "./listar.js"
-
 export class Api {
 
     static baseUrl = 'https://atividade-api-clientes.herokuapp.com/clientes'
@@ -15,59 +13,61 @@ export class Api {
             .then(res =>res)
             .catch(err => console.log(err))
 
-            Clientes.criarCard(data)
             return data
 
     }
 
     static async cadastrarCliente(data) {
-        const cadastrar = await fetch(this.urlBase, {
+        console.log(data)
+        const cadastrar = await fetch(this.baseUrl, {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'
             },
             body: JSON.stringify(data)
         })
-
+        
             .then(res => res.json())
+            .then(res => console.log(res))
             .catch(err => console.log(err))
-
         return cadastrar
     }
 
-    static async pesquisaCliente (idCliente) {
-        return await fetch(`${this.baseUrl}/${idCliente}`)
+    static async pesquisaCliente (id) {
+        return await fetch(`${this.baseUrl}/${id}`)
         .then(resp => resp.json())
+        
         .catch(err => console.log(err))
     }
  
     static async deletarCliente(id){
-        const deletar = await fetch(`${this.urlBase}${id}`,{
+        const deletar = await fetch(`${this.baseUrl}/${id}`,{
             method: 'DELETE',
             headers: {
                 'Content-Type':'application/json'
         }
         })
-        .then(res => res.json())
+        .then(console.log("deletado com sucesso"))
         .catch(err => console.log(err))
 
         return deletar
     }
 
     static async editarCliente(id, body){
-        const newclient = await fetch(`${this.url}/clientes/${id}`, {
+        const editClient = await fetch(`${this.baseUrl}/${id}`, {
             method : "PATCH",
-            headers: this.headers,
+            headers: {
+                'Content-Type':'application/json'
+        },
             body: JSON.stringify(body)
         })
         .then(res => res.json())
+        .then(console.log("cliente atualizado"))
         .catch(err => console.log(err))
+
+        return editClient
     }
 
 
 }
 
-Api.listarClientes()
-//Api.cadastrarCliente()
-// Api.editarCliente()
-// Api.deletarCliente()
