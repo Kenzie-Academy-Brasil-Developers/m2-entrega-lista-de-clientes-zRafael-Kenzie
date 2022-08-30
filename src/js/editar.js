@@ -79,7 +79,7 @@ class Editar {
                         }
         
                     }
-                    console.log(JSON.stringify(data))
+                    
                     Api.editarCliente(id, data)
 
                 }
